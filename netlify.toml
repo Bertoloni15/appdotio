@@ -1,0 +1,10 @@
+# Configuração do Netlify para o QuantBR
+# (este arquivo diz ao Netlify onde estão as funções)
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # usa o runtime de funções moderno do Netlify
+  node_bundler = "esbuild"

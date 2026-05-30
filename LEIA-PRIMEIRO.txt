@@ -1,0 +1,74 @@
+========================================
+  COMO SUBIR ESTES ARQUIVOS (LEIA ISTO!)
+========================================
+
+Esta pasta já está organizada do jeito CERTO. Não mude nada de lugar.
+
+A estrutura é esta (confira antes de subir):
+
+  quantbr-final/
+  ├── index.html
+  ├── netlify.toml
+  ├── package.json
+  ├── supabase-setup.sql
+  └── netlify/
+        └── functions/
+              ├── alerts-api.mjs
+              └── check-alerts.mjs
+
+----------------------------------------
+PASSO 1 — Apagar o repositório bagunçado no GitHub
+----------------------------------------
+No GitHub, entre no repositório atual > Settings > desça até o fim
+(área vermelha "Danger zone") > Delete this repository > confirme.
+Depois crie um novo: + > New repository > nome "quantbr" >
+marque "Add a README file" > Create repository.
+
+----------------------------------------
+PASSO 2 — Subir em DOIS envios (a regra de ouro!)
+----------------------------------------
+O GitHub só mantém a estrutura de pasta se você arrastar UMA pasta por
+vez. Por isso faça em dois envios:
+
+ENVIO 1 (arquivos soltos):
+  - No GitHub: Add file > Upload files
+  - Entre NESTA pasta (quantbr-final) e selecione SÓ os 4 arquivos soltos:
+      index.html, netlify.toml, package.json, supabase-setup.sql
+  - Arraste para o GitHub. Clique em "Commit changes".
+
+ENVIO 2 (a pasta de funções):
+  - Add file > Upload files de novo
+  - Arraste SOMENTE a pasta "netlify" (sozinha).
+  - Clique em "Commit changes".
+
+----------------------------------------
+PASSO 3 — Conferir no GitHub
+----------------------------------------
+Na entrada do repositório devem aparecer SOLTOS:
+  index.html, netlify.toml, package.json, supabase-setup.sql
+  e a pasta "netlify".
+
+Clique em: netlify > functions
+Devem estar lá: alerts-api.mjs e check-alerts.mjs
+(o caminho no topo tem que ser  repo / netlify / functions /)
+
+⚠️ Se os .mjs aparecerem direto em "netlify" (sem a pasta "functions"
+no meio), está ERRADO. Apague e refaça o ENVIO 2 arrastando a pasta
+"netlify" inteira (não o conteúdo dela).
+
+----------------------------------------
+PASSO 4 — No Netlify
+----------------------------------------
+O Netlify (já conectado ao GitHub) republica sozinho em ~1 min.
+Depois teste no navegador (troque NOME-DO-SITE):
+
+  https://NOME-DO-SITE.netlify.app/.netlify/functions/alerts-api?email=teste@teste.com
+
+Tem que aparecer:  {"ok":true,"alerts":[]}
+
+Se aparecer erro sobre "configuração do Supabase", as funções estão
+funcionando! Só confira as variáveis de ambiente no Netlify
+(Site configuration > Environment variables) e republique
+(Deploys > Trigger deploy > Deploy site).
+
+Qualquer dúvida, mande print para o Claude. Boa sorte! 🚀
